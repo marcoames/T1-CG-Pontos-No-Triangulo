@@ -1,1 +1,1 @@
-# T1 da disciplina de Computação Gráfica
+# T1 da disciplina Computação Gráfica
