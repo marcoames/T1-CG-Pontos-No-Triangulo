@@ -1,45 +1,32 @@
-from PontosNoTriangulo.Ponto import Ponto
-from PontosNoTriangulo.Poligonos import Polygon
-from PontosNoTriangulo.PontosNoTriangulo import PontosDoCenario
+
+from Ponto import *
+from Poligonos import *
+from PontosNoTriangulo.PontosNoTriangulo import Min, Max, Meio
 
 class Node:
-
-    # lista de filhos
-    #filhos = [null, null, null, null]
 
     def __init__(self, numPontos):
         self.filhos = [None, None, None, None]
         self.numPontos = numPontos
-        self.max = Ponto()
-        self.min = Ponto()
 
 class Quadtree:     
     
-    def __init__(self, pontos, Envelope: Polygon):
-        # pontos do cenario
-        numPontos = PontosDoCenario.getNVertices()
+    def __init__(self, capacidade, PontosDoCenario: Polygon):
 
-        # Nodo raiz
-        raiz = Node()
-        self.raiz = raiz
-        raiz.filhos[0] = Node(10)
-        raiz.filhos[1] = Node(10)
-        raiz.filhos[2] = Node(10)
-        raiz.filhos[3] = Node(10)
+        self.PontosDoCenario = PontosDoCenario
 
-        self.pontos = pontos
-        self.Envelope = Envelope
-        
-    def insereNodo():
-        pass
-    
-    def deveDividir(self):
-        if self.numPontos > 10:
-            return True
-        return False    
+        self.capacidade = capacidade
 
-    def set():
+        Envelope = Polygon()
+
+        self.NW = Envelope (Ponto(Min.x, Meio.y), Ponto(Meio.x, Max.y), Ponto(Meio.x, Max.y), Ponto(Meio.x, Meio.y)) 
+        self.NE = Envelope (Ponto(Meio.x, Meio.y), Ponto(Meio.x, Max.y), Ponto(Max.x, Max.y), Ponto(Max.x, Meio.y))
+        self.SW = Envelope (Ponto(Min.x, Min.y), Ponto(Min.x, Ponto.y), Ponto(Meio.x, Meio.y), Ponto(Meio.x, Min.y))
+        self.SE = Envelope (Ponto(Meio.x, Min.y), Ponto(Meio.x, Meio.y), Ponto(Max.x, Meio.y), Ponto(Max.x, Min.y))
+
+
+    def desenha(self):
         pass
 
-    def getFilhos(node):
-        return node.filhos
+    def imprime(self):
+        pass

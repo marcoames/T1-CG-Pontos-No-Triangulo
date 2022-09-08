@@ -24,6 +24,8 @@ from OpenGL.GLU import *
 from Poligonos import *
 import random
 
+from Quadtree import *
+
 # ***********************************************************************************
 # Variaveis que controlam o triangulo do campo de visao
 PontosDoCenario = Polygon()
@@ -242,7 +244,7 @@ ESCAPE = b'\x1b'
 
 def keyboard(*args):
     global flagDesenhaEixos, flagAumentaVisao, flagDiminuiVisao, n
-    global flagForcaBruta, flagEnvelope, flagDesenhaVerticesColoridos, flagqtPontos
+    global flagForcaBruta, flagEnvelope, flagDesenhaVerticesColoridos, flagqtPontos, flagQuadtree
 
     #print (args)
     # If escape is pressed, kill everything.
@@ -458,6 +460,12 @@ def desenhaEnvelope():
     Envelope.desenhaPoligono()
 
 
+def quadTree():
+    qt = Quadtree(10, PontosDoCenario)
+    #qt.imprime()
+    qt.desenha()
+
+
 def desenhaVerticesColoridos(Poly):
     global flagForcaBruta, flagEnvelope
     global vermelhos, amarelos, verdes
@@ -493,6 +501,10 @@ def desenhaVerticesColoridos(Poly):
                 glColor3f(0, 1, 0)  # verde
                 verdes += 1
                 glVertex3f(P.x, P.y, P.z)
+
+        if (flagQuadtree):
+            quadTree()
+            #Quadtree.desenha()        
 
     glEnd()
 
